@@ -2,9 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MovieApp extends StatelessWidget {
-  const MovieApp({super.key});
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
 
+class MovieApp extends StatelessWidget {
+  const MovieApp({super.key, required this.appRouter});
+  final AppRouter appRouter;
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -15,6 +18,8 @@ class MovieApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
         ),
+        initialRoute: Routes.homeScreen,
+        onGenerateRoute: appRouter.generateRoute,
         debugShowCheckedModeBanner: false,
       ),
     );
